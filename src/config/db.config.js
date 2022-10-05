@@ -10,7 +10,7 @@ const connect = () => {
 
     const sequelize = new Sequelize(database, "postgres", password, {
         host: hostName,
-        dialect: dialect,
+        dialect: "postgres",
         //operatorsAliases: false,
         pool: {
             max: 10,
