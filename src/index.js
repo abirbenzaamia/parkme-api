@@ -1,4 +1,3 @@
-const cool = require('cool-ascii-faces');
 const app = require('./server')
 const port = 3000 ;
 
