@@ -1,4 +1,4 @@
-require ("./config/db.config")
+//require ("./config/db.config")
 require('dotenv').config();
 const app = require('express')();
 const cors = require("cors");
