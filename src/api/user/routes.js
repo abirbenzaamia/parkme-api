@@ -11,13 +11,6 @@ router.get("/", async (req,res) => {
         data : data
         }
         ));
-        // let {nom, prenom, email, num_tel, mdp} = req.body;
-        // nom = nom.trim();
-        // prenom = prenom.trim();
-        // email = email.trim();
-        // num_tel = num_tel.trim(); 
-        // mdp = mdp.trim();
-        // const user
     } catch (error) {
         res.json({
             status : "FAILED",
@@ -25,5 +18,55 @@ router.get("/", async (req,res) => {
         });
     }
 });
+
+//signup 
+router.post("/signup" , async (req,res) => {
+    try {
+          let {nom, prenom, email, num_tel, mdp} = req.body;
+          nom = nom.trim();
+          prenom = prenom.trim();
+          email = email.trim();
+          num_tel = num_tel.trim(); 
+          mdp = mdp.trim();
+          userController.createUser(req.body).then(data => res.json({
+            status : "SUCCESS",
+            data : data
+            }
+          )).catch(error => {
+            res.json({
+                status : "FAILED",
+                message : error.message
+            });
+          });
+    } catch (error) {
+        res.json({
+            status : "FAILED",
+            message : error.message
+        });
+    }
+});
+ //signin 
+ router.post("/signin" , async (req,res) => {
+    try {
+        let {email, mdp} = req.body;
+        email = mdp.trim(); 
+        mdp = mdp.trim();
+        userController.signUser(req.body).then(data => res.json({
+          status : "SUCCESS",
+          data : data
+          }
+        )).catch(error => {
+          res.json({
+              status : "FAILED",
+              message : error.message
+          });
+        });
+  } catch (error) {
+      res.json({
+          status : "FAILED",
+          message : error.message
+      });
+  }
+ })
 
 module.exports = router;
