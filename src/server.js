@@ -7,7 +7,7 @@ const routes = require("./routes");
 
 app.use(cors());
 app.use(bodyParser.json())
-app.use(routes);
+//app.use(routes);
 app.get('/', (req, res) => {
     res.send(`<h1>API Works !!!</h1>`)
 });
