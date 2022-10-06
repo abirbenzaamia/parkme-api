@@ -18,12 +18,14 @@ const connect = () => {
             acquire: 20000,
             idle: 5000
         },
-        dialectOptions: {
-            ssl: {      /* <----- Add SSL option */
-              require: true,
-              rejectUnauthorized: false 
-            }
-        }
+        connectionString: process.env.DATABASE_URL || 'postgres://nwmvgkrhxtaucr:31e544f84ee380bd0731cdd1c9236dd6351c85e344451695285dcc2a7eaf65ff@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/de58pvdtukgkt4',
+        ssl: process.env.DATABASE_URL ? true : false
+        // dialectOptions: {
+        //     ssl: {      /* <----- Add SSL option */
+        //       require: true,
+        //       rejectUnauthorized: false 
+        //     }
+        // }
     });
 
     const db = {};
