@@ -12,6 +12,11 @@ const connect = () => {
         host: hostName,
         dialect: "postgres",
         //operatorsAliases: false,
+        dialectOptions: {
+            ssl: {      /* <----- Add SSL option */
+              require: true,
+              rejectUnauthorized: false 
+            },
         pool: {
             max: 10,
             min: 0,
