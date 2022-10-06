@@ -16,17 +16,20 @@ const connect = () => {
             max: 10,
             min: 0,
             acquire: 20000,
-            idle: 5000
+            idle: 5000,
+            
         },
         dialectOptions: {
-            ssl: {      /* <----- Add SSL option */
-              require: true,
-              rejectUnauthorized: false 
-            }
-          },
+      ssl: process.env.NODE_ENV !== 'development' ?  {      /* <----- Add SSL option */
+        require: true,
+        rejectUnauthorized: false 
+      } : false
+    },
              
          
-    });
+    },
+    
+    );
 
     const db = {};
     db.Sequelize = Sequelize;
